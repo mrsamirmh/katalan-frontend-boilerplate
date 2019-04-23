@@ -5,9 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: { main: './src/index.js' },
+    entry: {main: './src/index.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js'
@@ -19,20 +20,50 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
+                use: ['babel-loader', 'exports-loader']
             },
             {
                 test: /\.scss$/,
-                use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
-            }
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => {
+                                return [
+                                    require('cssnano'),
+                                    require('autoprefixer'),
+                                ]
+                            },
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]?[hash]',
+                        },
+                    },
+                ],
+            },
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'style.[contenthash].css',
+            filename: 'src/css/style.[contenthash].css',
         }),
         new HtmlWebpackPlugin({
             inject: false,
@@ -41,5 +72,12 @@ module.exports = {
             filename: 'index.html'
         }),
         new WebpackMd5Hash()
-    ]
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+
+            })
+        ]
+    }
 };

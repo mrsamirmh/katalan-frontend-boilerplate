@@ -1,2 +1,3 @@
-import "./scss/main.scss";
-console.log("hello, world");
+import './scss/main.scss'
+
+require('./js/main');
