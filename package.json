@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev --watch": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "nodemon --watch webpack.config.js --exec \\\"webpack && webpack-dev-server --progress --colors\\\""
   },
   "keywords": [
     "npm",
@@ -23,6 +24,8 @@
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "bootstrap": "^4.3.1",
+    "browser-sync": "^2.26.5",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
@@ -30,12 +33,14 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
+    "nodemon": "^1.19.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1",
     "webpack-md5-hash": "0.0.6",
     "webpack-node-externals": "^1.7.2"
   },
