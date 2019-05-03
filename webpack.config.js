@@ -11,7 +11,7 @@ module.exports = {
     entry: {main: './src/index.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js'
+        filename: 'src/js/[name].[chunkhash].js'
     },
     target: "node",
     externals: [nodeExternals()],
@@ -53,7 +53,9 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[path][name].[ext]?[hash]',
+                            name: '[name].[ext]?[hash]',
+                            outputPath: '../dist/src/img',
+                            publicPath: '../img'
                         },
                     },
                 ],
@@ -70,6 +72,12 @@ module.exports = {
             hash: true,
             template: './src/index.html',
             filename: 'index.html'
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/about-us.html',
+            filename: 'about-us.html'
         }),
         new WebpackMd5Hash()
     ],
