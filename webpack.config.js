@@ -1,11 +1,17 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const PACKAGE = require('./package.json');
+const banner = PACKAGE.name + ' - ' + PACKAGE.version + ' | ' +
+    '(c) 2019- ' + new Date().getFullYear() + '  ' + PACKAGE.author + ' | ' +
+    PACKAGE.license;
 
 module.exports = {
     entry: {main: './src/index.js'},
@@ -79,7 +85,10 @@ module.exports = {
             template: './src/about-us.html',
             filename: 'about-us.html'
         }),
-        new WebpackMd5Hash()
+        new WebpackMd5Hash(),
+        new webpack.BannerPlugin({
+            banner: banner
+        })
     ],
     optimization: {
         minimizer: [
