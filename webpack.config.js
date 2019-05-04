@@ -1,5 +1,6 @@
 const path = require('path');
 
+// Declarations
 const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -8,7 +9,29 @@ const WebpackMd5Hash = require("webpack-md5-hash");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const fs = require('fs');
 
+// Get views pages
+function generateHtmlPlugins(templateDir) {
+    const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+    return templateFiles.map(item => {
+        // Split names and extension
+        const parts = item.split('.');
+        const name = parts[0];
+        const extension = parts[1];
+        return new HtmlWebpackPlugin({
+            filename: `${name}.html`,
+            template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+            inject: false,
+            hash: true,
+        })
+    })
+}
+
+// We will call the function like this:
+const htmlPlugins = generateHtmlPlugins('./src/views');
+
+// Copyright generation
 const PACKAGE = require('./package.json');
 const banner = PACKAGE.name + ' - ' + PACKAGE.version + ' | ' +
     '(c) 2019- ' + new Date().getFullYear() + '  ' + PACKAGE.author + ' | ' +
@@ -73,7 +96,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]?[hash]',
                             outputPath: '../dist/src/img',
-                            publicPath: '../img'
+                            publicPath: '../img2'
                         },
                     },
                 ],
@@ -85,18 +108,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'src/css/style.[contenthash].css',
         }),
-        new HtmlWebpackPlugin({
-            inject: false,
-            hash: true,
-            template: './src/index.html',
-            filename: 'index.html'
-        }),
-        new HtmlWebpackPlugin({
-            inject: false,
-            hash: true,
-            template: './src/about-us.html',
-            filename: 'about-us.html'
-        }),
         new WebpackMd5Hash(),
         new webpack.BannerPlugin({
             banner: banner
@@ -107,7 +118,8 @@ module.exports = {
             port: 994,
             proxy: 'http://localhost:8080/'
         })
-    ],
+    ]
+        .concat(htmlPlugins),
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
