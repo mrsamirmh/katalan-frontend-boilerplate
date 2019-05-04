@@ -1,7 +1,5 @@
 @font-face {
   font-family: 'Muli Black';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-Black.ttf');
 }
 
@@ -11,8 +9,6 @@
 
 @font-face {
   font-family: 'Muli BlackItalic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-BlackItalic.ttf');
 }
 
@@ -22,8 +18,6 @@
 
 @font-face {
   font-family: 'Muli Bold';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-Bold.ttf');
 }
 
@@ -33,8 +27,6 @@
 
 @font-face {
   font-family: 'Muli BoldItalic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-BoldItalic.ttf');
 }
 
@@ -44,8 +36,6 @@
 
 @font-face {
   font-family: 'Muli-Italic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-Italic.ttf');
 }
 
@@ -55,8 +45,6 @@
 
 @font-face {
   font-family: 'Muli-Light';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-Light.ttf');
 }
 
@@ -66,8 +54,6 @@
 
 @font-face {
   font-family: 'Muli-LightItalic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-LightItalic.ttf');
 }
 
@@ -77,8 +63,6 @@
 
 @font-face {
   font-family: 'Muli-ExtraBold';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-ExtraBold.ttf');
 }
 
@@ -88,8 +72,6 @@
 
 @font-face {
   font-family: 'Muli-ExtraBoldItalic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-ExtraBoldItalic.ttf');
 }
 
@@ -98,9 +80,25 @@
 }
 
 @font-face {
+  font-family: 'Muli-ExtraLight';
+  src: url('../fonts/Muli/Muli-ExtraLight.ttf');
+}
+
+.font-muli-extra-light {
+  font-family: 'Muli-ExtraLight', sans-serif;
+}
+
+@font-face {
+  font-family: 'Muli-ExtraLightItalic';
+  src: url('../fonts/Muli/Muli-ExtraLightItalic.ttf');
+}
+
+.font-muli-extra-light-italic {
+  font-family: 'Muli-ExtraLightItalic', sans-serif;
+}
+
+@font-face {
   font-family: 'Muli-Regular';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-Regular.ttf');
 }
 
@@ -110,8 +108,6 @@
 
 @font-face {
   font-family: 'Muli-SemiBold';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-SemiBold.ttf');
 }
 
@@ -121,8 +117,6 @@
 
 @font-face {
   font-family: 'Muli-SemiBoldItalic';
-  font-style: normal;
-  font-weight: 400;
   src: url('../fonts/Muli/Muli-SemiBoldItalic.ttf');
 }
 
