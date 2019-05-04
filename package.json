@@ -6,7 +6,7 @@
   "scripts": {
     "dev --watch": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "start": "nodemon --watch webpack.config.js --exec \\\"webpack && webpack-dev-server --progress --colors\\\""
+    "start": "nodemon --watch webpack.config.js --exec \\\"webpack --mode development && webpack-dev-server --progress --colors\\\""
   },
   "keywords": [
     "npm",
