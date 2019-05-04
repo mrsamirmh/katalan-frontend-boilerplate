@@ -94,9 +94,10 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
+                            useRelativePath: true,
                             name: '[name].[ext]?[hash]',
-                            outputPath: '../dist/src/img',
-                            publicPath: '../img2'
+                            outputPath: '/src/img',
+                            publicPath: '../img'
                         },
                     },
                 ],
