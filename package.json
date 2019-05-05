@@ -53,7 +53,8 @@
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1",
     "webpack-md5-hash": "0.0.6",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "@babel/preset-env": "^7.4.4"
   },
   "dependencies": {}
 }
